@@ -33,6 +33,17 @@ setWishes(newOrder: WishModel[]) {
     const data = await AsyncStorage.getItem("wishes");
     if (data) this.wishes = JSON.parse(data);
   }
+
+  deleteWish(id: string) {
+  this.wishes = this.wishes.filter((wish) => wish.id !== id);
+}
+updateWish(updatedWish: WishModel) {
+  const index = this.wishes.findIndex(w => w.id === updatedWish.id);
+  if (index !== -1) {
+    this.wishes[index] = updatedWish;
+  }
+}
+
 }
 
 export const wishStore = new WishStore();
