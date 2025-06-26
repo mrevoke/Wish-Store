@@ -32,7 +32,9 @@ export const AddWishScreen = () => {
       address,
     });
 
-    navigation.goBack();
+    setTimeout(() => {
+  navigation.goBack();
+}, 50);
   };
 
   return (
