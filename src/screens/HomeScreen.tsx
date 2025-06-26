@@ -2,11 +2,12 @@ import React from "react";
 import {
   View,
   Text,
-  FlatList,
-  StyleSheet,
   Image,
   TouchableOpacity,
+  StyleSheet,
 } from "react-native";
+import "react-native-reanimated";
+import DraggableFlatList from "react-native-draggable-flatlist";
 import { observer } from "mobx-react-lite";
 import { wishStore } from "../stores/WishStore";
 import { useNavigation } from "@react-navigation/native";
@@ -14,14 +15,26 @@ import { useNavigation } from "@react-navigation/native";
 export const HomeScreen = observer(() => {
   const navigation = useNavigation<any>();
 
+  const handleDragEnd = ({ data }: { data: typeof wishStore.wishes }) => {
+    wishStore.setWishes(data); // You need to implement this action in your store
+  };
+
   return (
     <View style={styles.container}>
-      <FlatList
-        data={wishStore.wishes}
+      <DraggableFlatList
+        data={wishStore.wishes.slice()} // Ensure a shallow copy for MobX tracking
         keyExtractor={(item) => item.id}
+        onDragEnd={handleDragEnd}
         contentContainerStyle={styles.listContent}
-        renderItem={({ item }) => (
-          <TouchableOpacity activeOpacity={0.85} style={styles.card}>
+        renderItem={({ item, drag, isActive }) => (
+          <TouchableOpacity
+            onLongPress={drag}
+            activeOpacity={0.9}
+            style={[
+              styles.card,
+              isActive && { opacity: 0.8, transform: [{ scale: 0.97 }] },
+            ]}
+          >
             {item.imageUri && (
               <Image source={{ uri: item.imageUri }} style={styles.image} />
             )}
@@ -45,6 +58,8 @@ export const HomeScreen = observer(() => {
     </View>
   );
 });
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

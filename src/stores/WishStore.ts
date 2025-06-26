@@ -16,6 +16,10 @@ class WishStore {
     this.loadWishes();
   };
 
+setWishes(newOrder: WishModel[]) {
+    this.wishes = newOrder;
+  }
+
   removeWish = (id: string) => {
     this.wishes = this.wishes.filter(w => w.id !== id);
     this.saveWishes();
