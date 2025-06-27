@@ -55,7 +55,7 @@ export const WishCard = ({
             style={styles.planButton}
             onPress={() => setModalVisible(true)}
           >
-            <Text style={styles.planButtonText}>🗺 Make a Plan</Text>
+            <Text style={styles.planButtonText}>🗺 Generate a Plan</Text>
           </TouchableOpacity>
         </View>
       </TouchableOpacity>

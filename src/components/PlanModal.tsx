@@ -1,5 +1,5 @@
 // components/PlanModal.tsx
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -10,44 +10,22 @@ import {
   StyleSheet,
 } from "react-native";
 import Markdown from "react-native-markdown-display";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { observer } from "mobx-react-lite";
+import { planStore } from "../stores/PlanStore";
 import { generateTravelPlan, savePlanToStorage } from "../services/planService";
 
-export const PlanModal = ({ visible, onClose, placeName, address }: {
+export const PlanModal = observer(({ visible, onClose, placeName, address }: {
   visible: boolean;
   onClose: () => void;
   placeName: string;
   address: string;
 }) => {
-  const [days, setDays] = useState("");
-  const [budget, setBudget] = useState("");
-  const [planResult, setPlanResult] = useState("");
-
-  const savePlan = async (plan: string) => {
-    const key = `plan-${placeName}`;
-    try {
-      await AsyncStorage.setItem(key, JSON.stringify({
-        placeName,
-        address,
-        days,
-        budget,
-        plan,
-        createdAt: new Date().toISOString(),
-      }));
-    } catch (err) {
-      console.error("Error saving plan:", err);
-    }
+  const generatePlan = async () => {
+    planStore.setPlanResult("Generating...");
+    const plan = await generateTravelPlan({ placeName, address, days: planStore.days, budget: planStore.budget });
+    planStore.setPlanResult(plan);
+    await savePlanToStorage({ placeName, address, days: planStore.days, budget: planStore.budget, plan });
   };
-
-// ...
-
-const generatePlan = async () => {
-  setPlanResult("Generating...");
-  const plan = await generateTravelPlan({ placeName, address, days, budget });
-  setPlanResult(plan);
-  await savePlanToStorage({ placeName, address, days, budget, plan });
-};
-
 
   return (
     <Modal visible={visible} animationType="slide" transparent>
@@ -57,15 +35,15 @@ const generatePlan = async () => {
 
           <TextInput
             placeholder="Number of days"
-            value={days}
-            onChangeText={setDays}
+            value={planStore.days}
+            onChangeText={planStore.setDays}
             keyboardType="number-pad"
             style={styles.input}
           />
           <TextInput
-            placeholder="Budget (in $)"
-            value={budget}
-            onChangeText={setBudget}
+            placeholder="Budget (in ₹)"
+            value={planStore.budget}
+            onChangeText={planStore.setBudget}
             keyboardType="number-pad"
             style={styles.input}
           />
@@ -75,7 +53,7 @@ const generatePlan = async () => {
           </TouchableOpacity>
 
           <ScrollView style={{ maxHeight: 200, marginTop: 10 }}>
-            <Markdown style={markdownStyles}>{planResult}</Markdown>
+            <Markdown style={markdownStyles}>{planStore.planResult}</Markdown>
           </ScrollView>
 
           <TouchableOpacity style={styles.closeBtn} onPress={onClose}>
@@ -85,7 +63,7 @@ const generatePlan = async () => {
       </View>
     </Modal>
   );
-};
+});
 
 const styles = StyleSheet.create({
   modalOverlay: {
