@@ -1,63 +1,88 @@
+## ✨ Wish Store – A Delightful React Native Wish-Tracking App
 
-## ✨ Wish Store App – React Native
-
-A beautifully simple wish-tracking app built with React Native, MobX, and AsyncStorage. Add, edit, delete, and reorder your wishes with ease.
+**Wish Store** is a minimal and elegant mobile app built with **React Native**, **MobX**, and **AsyncStorage**, designed to help you store and manage your dream destinations or personal goals. It features AI-powered planning, image support, and a smooth drag-and-drop experience.
 
 ---
 
-### 🏠 Home Screen
+### 📱 Home Screen
 
-Displays all your saved wishes with drag-and-drop reordering support.
+Your personal dashboard of wishes – clean and scrollable with support for intuitive drag-and-drop reordering.
 
-![Home Screen](https://github.com/user-attachments/assets/69e4d0a4-9bf8-4f09-9c1d-bcf32466996a)
+> 🖼️ Homescreen
+> ![Home Screen](https://github.com/user-attachments/assets/35a2d7de-de18-4ac1-8b63-c9c582a837d7)
 
 ---
 
 ### ➕ Add a New Wish
 
-Clean and intuitive form to add new wishes.
+Quickly add a new destination or dream with an easy-to-use form.
 
-![Add Wish](https://github.com/user-attachments/assets/5fd6da89-d62b-40ac-916b-a00276897fa7)
-
----
-
-### 🖼️ Add Wish with Image
-
-Supports adding an image URL with a live preview.
-
-![Add Wish with Image](https://github.com/user-attachments/assets/bf3d9521-0212-4fa1-a4b1-c5674bbd8019)
+> 🖼️ Add Wish
+> ![Add Wish](https://github.com/user-attachments/assets/5fd6da89-d62b-40ac-916b-a00276897fa7)
 
 ---
 
-### 📝 Edit Wish
+### 🖼️ Add Wish with Image Preview
 
-Update your existing wish using a bottom modal.
+Paste an image URL and instantly preview how your wish will look.
 
-![Edit Wish](https://github.com/user-attachments/assets/5d2e8a68-1185-46bd-9809-3bd1168e3031)
+> 🖼️ Add Wish with Image
+> ![Add Wish with Image](https://github.com/user-attachments/assets/bf3d9521-0212-4fa1-a4b1-c5674bbd8019)
 
 ---
 
-### ❌ Delete Wish Confirmation
+### 📝 Edit an Existing Wish
 
-Delete a wish safely with a confirmation alert.
+Need to change something? Open the edit modal and update your wish instantly.
 
-![Delete Wish](https://github.com/user-attachments/assets/582a81d4-8693-4be3-b4b9-0ceffea31274)
+> 🖼️ Edit Wish
+> ![Edit Wish](https://github.com/user-attachments/assets/5d2e8a68-1185-46bd-9809-3bd1168e3031)
+
+---
+
+### ❌ Confirm Before Deleting
+
+Remove a wish with peace of mind using a confirmation dialog.
+
+> 🖼️ Delete Wish
+> ![Delete Wish](https://github.com/user-attachments/assets/582a81d4-8693-4be3-b4b9-0ceffea31274)
+
+---
+
+### 🤖 AI-Powered Travel Plan Generator
+
+Tap the **🗺 Make a Plan** button to generate a personalized travel itinerary for your wish using **Gemini API**.
+
+> 🖼️ Plan Modal
+> ![AI Plan Modal](https://github.com/user-attachments/assets/7527b9a4-6448-45da-95e3-24951827b5df)
+
+> 🧠 AI Plan Output
+> ![AI Plan Generated](https://github.com/user-attachments/assets/d9aec91d-e440-438a-851b-380649529b34)
 
 ---
 
 ### 🔀 Drag-and-Drop Reordering
 
-Easily rearrange your wishes by dragging cards:
+Rearrange wishes using a smooth and responsive drag gesture.
 
 🎞️ [Watch Demo Video](https://github.com/user-attachments/assets/0e7be8fc-06c8-4b6b-8812-4ff47f6bb83e)
 
 ---
 
-### 🚀 Tech Stack
+### 🛠️ Tech Stack
 
-* **React Native**
-* **MobX** for state management
-* **AsyncStorage** for local persistence
-* **Draggable FlatList** for reordering
+* ⚛️ **React Native** – Cross-platform mobile framework
+* 📦 **MobX** – Scalable state management
+* 💾 **AsyncStorage** – Local storage for offline persistence
+* 📋 **Draggable FlatList** – Smooth reorder experience
+* 🤖 **Gemini API (Google)** – AI-generated trip planning
 
+---
 
+### 💡 Features Roadmap
+
+* [x] Add/edit/delete wishes
+* [x] Image preview support
+* [x] Persistent storage with AsyncStorage
+* [x] Drag-and-drop sorting
+* [x] AI travel planner
