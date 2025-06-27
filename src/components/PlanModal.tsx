@@ -41,7 +41,7 @@ export const PlanModal = observer(({ visible, onClose, placeName, address }: {
             style={styles.input}
           />
           <TextInput
-            placeholder="Budget (in ₹)"
+            placeholder="Budget (in $)"
             value={planStore.budget}
             onChangeText={planStore.setBudget}
             keyboardType="number-pad"

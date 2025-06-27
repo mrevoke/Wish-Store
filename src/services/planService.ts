@@ -12,7 +12,7 @@ export const generateTravelPlan = async ({
   days: string;
   budget: string;
 }) => {
-  const prompt = `Make a travel plan for ${placeName}, ${address}. Number of days: ${days}, Budget: ₹${budget}`;
+  const prompt = `Make a travel plan for ${placeName}, ${address}. Number of days: ${days}, Budget: $${budget}`;
   const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
   try {
